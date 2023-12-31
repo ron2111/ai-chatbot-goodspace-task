@@ -7,7 +7,7 @@ import {
   sendChatsToUser,
 } from "../controllers/chat-controllers.js";
 
-//Protected API
+//Protected API - only authenticated users can access this
 const chatRoutes = Router();
 chatRoutes.post(
   "/new",

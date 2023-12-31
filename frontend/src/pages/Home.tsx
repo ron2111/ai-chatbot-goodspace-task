@@ -31,7 +31,7 @@ const Home = () => {
           }}
         >
           <img
-            src="robot.png"
+            src="sakshi-ai.png"
             alt="robot"
             style={{ width: "200px", margin: "auto" }}
           />
