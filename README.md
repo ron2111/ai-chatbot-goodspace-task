@@ -3,6 +3,9 @@
 - Frontend Deployed Link:https://goodspace-gpt-task.vercel.app/
 - Backend Deployed Link: https://goodspace-gpt.vercel.app/
 
+#### Test Credentials to log in:
+- Email: test@123.com
+- Password: 123456
 ### Home Page:
 
 ![Alt text](image.png)
