@@ -1,9 +1,16 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Box, Avatar, Typography, Button, IconButton } from "@mui/material";
+import {
+  Box,
+  Avatar,
+  Typography,
+  Button,
+  IconButton,
+  Alert,
+} from "@mui/material";
 import red from "@mui/material/colors/red";
 import { useAuth } from "../context/AuthContext";
 import ChatItem from "../components/chat/ChatItem";
-import { IoMdSend } from "react-icons/io";
+import { IoMdCamera, IoMdMic, IoMdSend, IoMdVideocam } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import {
   deleteUserChats,
@@ -20,6 +27,8 @@ const Chat = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
+
+  // Submit chat messages
   const handleSubmit = async () => {
     const content = inputRef.current?.value as string;
     if (inputRef && inputRef.current) {
@@ -31,6 +40,14 @@ const Chat = () => {
     setChatMessages([...chatData.chats]);
     //
   };
+
+  // Dumy audio/ video call msg
+  const handleDummy = async () => {
+    alert(
+      "This is a dummy feature as of now. It will be functional in future updates."
+    );
+  };
+  // Delete convo function
   const handleDeleteChats = async () => {
     try {
       toast.loading("Deleting Chats", { id: "deletechats" });
@@ -103,11 +120,11 @@ const Chat = () => {
             {auth?.user?.name.split(" ")[1][0]}
           </Avatar>
           <Typography sx={{ mx: "auto", fontFamily: "work sans" }}>
-            You are talking to a ChatBOT
+            You are talking to Goodspace-GPT
           </Typography>
-          <Typography sx={{ mx: "auto", fontFamily: "work sans", my: 4, p: 3 }}>
-            You can ask some questions related to Knowledge, Business, Advices,
-            Education, etc. But avoid sharing personal information
+          <Typography sx={{ mx: "auto", fontFamily: "work sans", my: 3, p: 3 }}>
+            This project is built as a submission for the 2024 SDE Internship +
+            PPO offer at Goodspace.ai .
           </Typography>
           <Button
             onClick={handleDeleteChats}
@@ -189,6 +206,12 @@ const Chat = () => {
               fontSize: "20px",
             }}
           />
+          <IconButton onClick={handleDummy} sx={{ color: "white", mx: 1 }}>
+            <IoMdMic />
+          </IconButton>
+          <IconButton onClick={handleDummy} sx={{ color: "white", mx: 1 }}>
+            <IoMdVideocam />
+          </IconButton>
           <IconButton onClick={handleSubmit} sx={{ color: "white", mx: 1 }}>
             <IoMdSend />
           </IconButton>
