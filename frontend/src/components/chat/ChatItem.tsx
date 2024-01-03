@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+// Syntax Highlighter
 function extractCodeFromString(message: string) {
   if (message.includes("```")) {
     const blocks = message.split("```");
@@ -11,6 +12,7 @@ function extractCodeFromString(message: string) {
   }
 }
 
+// Code block validation
 function isCodeBlock(str: string) {
   if (
     str.includes("=") ||
@@ -47,7 +49,7 @@ const ChatItem = ({
       }}
     >
       <Avatar sx={{ ml: "0" }}>
-        <img src="openai.png" alt="openai" width={"30px"} />
+        <img src="goodspace-logo.png" alt="Goodspace" width={"42px"} />
       </Avatar>
       <Box>
         {!messageBlocks && (
@@ -76,6 +78,7 @@ const ChatItem = ({
         borderRadius: 2,
       }}
     >
+      {/* User Avatar */}
       <Avatar sx={{ ml: "0", bgcolor: "black", color: "white" }}>
         {auth?.user?.name[0]}
         {auth?.user?.name.split(" ")[1][0]}
@@ -90,6 +93,7 @@ const ChatItem = ({
             isCodeBlock(block) ? (
               <SyntaxHighlighter style={coldarkDark} language="javascript">
                 {block}
+                {/* Syntax Highlighting for code outputs */}
               </SyntaxHighlighter>
             ) : (
               <Typography sx={{ fontSize: "20px" }}>{block}</Typography>

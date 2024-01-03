@@ -1,16 +1,9 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import {
-  Box,
-  Avatar,
-  Typography,
-  Button,
-  IconButton,
-  Alert,
-} from "@mui/material";
+import { Box, Avatar, Typography, Button, IconButton } from "@mui/material";
 import red from "@mui/material/colors/red";
 import { useAuth } from "../context/AuthContext";
 import ChatItem from "../components/chat/ChatItem";
-import { IoMdCamera, IoMdMic, IoMdSend, IoMdVideocam } from "react-icons/io";
+import { IoMdMic, IoMdSend, IoMdVideocam } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import {
   deleteUserChats,
@@ -59,6 +52,7 @@ const Chat = () => {
       toast.error("Deleting chats failed", { id: "deletechats" });
     }
   };
+  // useLayoutEffect is a version of useEffect that fires before the browser repaints the screen.
   useLayoutEffect(() => {
     if (auth?.isLoggedIn && auth.user) {
       toast.loading("Loading Chats", { id: "loadchats" });

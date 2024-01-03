@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+
+import mongoose from "mongoose"; // Mongo DB ODM
 import { randomUUID } from "crypto";
 const chatSchema = new mongoose.Schema({
   id: {
